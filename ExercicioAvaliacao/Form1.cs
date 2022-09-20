@@ -19,13 +19,15 @@ namespace ExercicioAvaliacao
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Principal abrir = new Principal();
-            abrir.Show();
-            
-
-            
-
-            
+            if (txtLogin.Text == "Admin" && txtSenha.Text == "admin")
+            {
+                Principal abrir = new Principal();
+                abrir.Show();
+            }
+            else
+            {
+                MessageBox.Show("Insira os dados corretos");
+            }                       
         }
     }
 }

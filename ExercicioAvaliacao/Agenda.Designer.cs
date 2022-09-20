@@ -90,6 +90,7 @@
             this.dtpData.Name = "dtpData";
             this.dtpData.Size = new System.Drawing.Size(262, 20);
             this.dtpData.TabIndex = 4;
+            this.dtpData.Value = new System.DateTime(2022, 9, 22, 0, 0, 0, 0);
             this.dtpData.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // rtbDescricao
@@ -134,6 +135,7 @@
             this.dgwAgenda.Name = "dgwAgenda";
             this.dgwAgenda.Size = new System.Drawing.Size(690, 135);
             this.dgwAgenda.TabIndex = 13;
+            this.dgwAgenda.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwAgenda_CellDoubleClick);
             // 
             // label11
             // 
@@ -152,6 +154,7 @@
             this.btnDeletar.TabIndex = 0;
             this.btnDeletar.Text = "DELETAR";
             this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // btnAlterar
             // 
@@ -161,6 +164,7 @@
             this.btnAlterar.TabIndex = 0;
             this.btnAlterar.Text = "ALTERAR";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnInserir
             // 
