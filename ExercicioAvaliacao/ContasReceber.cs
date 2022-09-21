@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,108 @@ namespace ExercicioAvaliacao
         public ContasReceber()
         {
             InitializeComponent();
+            mostrar();
+        }
+        string continua = "yes";
+        string date;
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            verificarvazio();
+            if (continua == "yes" && btnInserir.Text == "INSERIR")
+            {
+                pegaData();
+                try
+                {
+                    using (MySqlConnection cnn = new MySqlConnection())
+                    {
+                        cnn.ConnectionString = "server=localhost;database=controle;uid=root;pwd=;port=3306";
+                        cnn.Open();
+                        MessageBox.Show("Inserido com sucesso!");
+                        string sql = "insert into contas (titulo, valor, data, descricao) values ('" + txtNome.Text + "', '" + txtValor.Text + "', '" + date + "', '" + txtDescricao.Text + "')";
+                        MySqlCommand cmd = new MySqlCommand(sql, cnn);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                limpar();
+            }
+            else if (btnInserir.Text == "NOVO")
+            {
+                limpar();
+            }
+            mostrar();
+        }
+        void mostrar()
+        {
+            try
+            {
+                using (MySqlConnection cnn = new MySqlConnection())
+                {
+                    cnn.ConnectionString = "server=localhost;database=controle;uid=root;pwd=;port=3306;convert zero datetime = true";
+                    cnn.Open();
+                    string sql = "Select * from contas";
+                    DataTable table = new DataTable();
+                    MySqlDataAdapter adpter = new MySqlDataAdapter(sql, cnn);
+                    adpter.Fill(table);
+                    dgwContasReceber.DataSource = table;
+
+                    dgwContasReceber.AutoGenerateColumns = false;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        void verificarvazio()
+        {
+            if (txtNome.Text == "" || txtValor.Text == "" || dtpDataVencimento.Text == "" || txtDescricao.Text == "")
+            {
+                continua = "no";
+                MessageBox.Show("Insira todos os dados parça");
+            }
+            else
+            {
+                continua = "yes";
+            }
+        }
+        void limpar()
+        {
+            txtIdContasReceber.Clear();
+            txtNome.Clear();
+            txtValor.Clear();
+            txtDescricao.Clear();
+            btnInserir.Text = "INSERIR";
+            btnDeletar.Visible = false;
+            btnAlterar.Visible = false;
+        }
+        void pegaData()
+        {
+            DateTime data = dtpDataVencimento.Value;
+            string dataCurta = data.ToShortDateString();
+            string[] vetData = dataCurta.Split('/');
+            string dataNova = vetData[2] + "-" + vetData[1] + "-" + vetData[0];
+            date = dataNova;
+        }
+
+        private void dgwContasPagar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgwContasReceber.CurrentRow.Index != -1)
+            {
+                txtIdContasReceber.Text = dgwContasReceber.CurrentRow.Cells[0].Value.ToString();
+                txtNome.Text = dgwContasReceber.CurrentRow.Cells[1].Value.ToString();
+                txtValor.Text = dgwContasReceber.CurrentRow.Cells[2].Value.ToString();
+                dtpDataVencimento.Text = dgwContasReceber.CurrentRow.Cells[3].Value.ToString();
+                txtDescricao.Text = dgwContasReceber.CurrentRow.Cells[4].Value.ToString();
+                btnInserir.Text = "NOVO";
+                btnDeletar.Visible = true;
+                btnAlterar.Visible = true;
+            }
         }
     }
 }

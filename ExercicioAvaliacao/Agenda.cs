@@ -21,12 +21,12 @@ namespace ExercicioAvaliacao
             btnAlterar.Visible = false;
         }
         string continua = "yes";
-        string dataDevolve;
         string date;
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            
+            dtpData.Format = DateTimePickerFormat.Custom;
+            dtpData.CustomFormat = "ddddddd, dd MMM yyyy";
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -104,6 +104,7 @@ namespace ExercicioAvaliacao
             txtTitulo.Clear();
             txtPesquisar.Clear();
             rtbDescricao.Clear();
+            cmbHora.Text = "";
             btnInserir.Text = "INSERIR";
             btnDeletar.Visible = false;
             btnAlterar.Visible = false;
@@ -113,12 +114,10 @@ namespace ExercicioAvaliacao
         {
             if (dgwAgenda.CurrentRow.Index != -1)
             {
-                devolveData();
                 txtIdAgenda.Text = dgwAgenda.CurrentRow.Cells[0].Value.ToString();
                 txtTitulo.Text = dgwAgenda.CurrentRow.Cells[1].Value.ToString();
                 cmbHora.Text = dgwAgenda.CurrentRow.Cells[2].Value.ToString();
-                dataDevolve = dgwAgenda.CurrentRow.Cells[3].Value.ToString();
-                dtpData.Text = dataDevolve;
+                dtpData.Text = dgwAgenda.CurrentRow.Cells[3].Value.ToString();
                 rtbDescricao.Text = dgwAgenda.CurrentRow.Cells[4].Value.ToString();
                 btnInserir.Text = "NOVO";
                 btnDeletar.Visible = true;
@@ -134,9 +133,9 @@ namespace ExercicioAvaliacao
                 {
                     using (MySqlConnection cnn = new MySqlConnection())
                     {
-                        cnn.ConnectionString = "server=localhost;database=agenda;uid=root;pwd=;port=3306";
+                        cnn.ConnectionString = "server=localhost;database=controle;uid=root;pwd=;port=3306";
                         cnn.Open();
-                        string sql = "Update agenda set titulo='" + txtTitulo.Text + "', hora='" + cmbHora.Text + "', dats='" + dtpData.Text + "', descricao='" + rtbDescricao.Text + "' where idContatos='" + txtIdAgenda.Text + "'";
+                        string sql = "Update agenda set titulo='" + txtTitulo.Text + "', hora='" + cmbHora.Text + "', data='" + dtpData.Text + "', descricao='" + rtbDescricao.Text + "' where idContatos='" + txtIdAgenda.Text + "'";
                         MySqlCommand cmd = new MySqlCommand(sql, cnn);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Atualizado com sucesso!");
@@ -159,9 +158,9 @@ namespace ExercicioAvaliacao
                 {
                     using (MySqlConnection cnn = new MySqlConnection())
                     {
-                        cnn.ConnectionString = "server=localhost;database=agenda;uid=root;pwd=;port=3306";
+                        cnn.ConnectionString = "server=localhost;database=controle;uid=root;pwd=;port=3306";
                         cnn.Open();
-                        string sql = "Delete from contatos where idContatos = '" + txtIdAgenda.Text + "'";
+                        string sql = "Delete from agenda where idAgenda = '" + txtIdAgenda.Text + "'";
                         MySqlCommand cmd = new MySqlCommand(sql, cnn);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show(" Deletado com sucesso! ");
@@ -185,13 +184,39 @@ namespace ExercicioAvaliacao
             string dataNova = vetData[2] + "-" + vetData[1] + "-" + vetData[0];
             date = dataNova;
         }
-        void devolveData()
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
         {
-            date = dgwAgenda.CurrentRow.Cells[0].Value.ToString();
-            string dato = date;
-            string[] vetData = date.Split('/');
-            string dataDevolve = vetData[0] + "/" + vetData[1] + "/" + vetData[2];            
-            dtpData.Value = DateTime.Parse(dataDevolve);
+            try
+            {
+                using (MySqlConnection cnn = new MySqlConnection())
+                {
+                    cnn.ConnectionString = "server=localhost;database=controle;uid=root;pwd=;port=3306";
+                    cnn.Open();
+                    string sql;
+                    sql = "Select * from Agenda where titulo Like'" + txtPesquisar.Text + "%'";                    
+                    MySqlCommand cmd = new MySqlCommand(sql, cnn);
+                    cmd.ExecuteNonQuery();
+                    DataTable table = new DataTable();
+                    MySqlDataAdapter adpter = new MySqlDataAdapter(sql, cnn);
+                    adpter.Fill(table);
+                    dgwAgenda.DataSource = table;
+
+                    dgwAgenda.AutoGenerateColumns = false;
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            if (txtPesquisar != null)
+            {
+                btnInserir.Text = "NOVO";
+            }
         }
     }   
 }

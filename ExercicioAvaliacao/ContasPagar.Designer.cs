@@ -69,6 +69,7 @@
             this.dgwContasPagar.Name = "dgwContasPagar";
             this.dgwContasPagar.Size = new System.Drawing.Size(690, 135);
             this.dgwContasPagar.TabIndex = 13;
+            this.dgwContasPagar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwContasPagar_CellDoubleClick);
             // 
             // btnPesquisar
             // 
@@ -78,6 +79,7 @@
             this.btnPesquisar.TabIndex = 0;
             this.btnPesquisar.Text = "PESQUISAR";
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnDeletar
             // 
@@ -87,6 +89,7 @@
             this.btnDeletar.TabIndex = 0;
             this.btnDeletar.Text = "DELETAR";
             this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click_1);
             // 
             // btnAlterar
             // 
@@ -96,6 +99,7 @@
             this.btnAlterar.TabIndex = 0;
             this.btnAlterar.Text = "ALTERAR";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnInserir
             // 
@@ -105,6 +109,7 @@
             this.btnInserir.TabIndex = 0;
             this.btnInserir.Text = "INSERIR";
             this.btnInserir.UseVisualStyleBackColor = true;
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
             // dtpdataVencimento
             // 
@@ -112,6 +117,7 @@
             this.dtpdataVencimento.Name = "dtpdataVencimento";
             this.dtpdataVencimento.Size = new System.Drawing.Size(278, 20);
             this.dtpdataVencimento.TabIndex = 21;
+            this.dtpdataVencimento.ValueChanged += new System.EventHandler(this.dtpdataVencimento_ValueChanged);
             // 
             // txtIdContasPagar
             // 
