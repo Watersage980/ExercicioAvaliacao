@@ -76,7 +76,7 @@ namespace ExercicioAvaliacao
         private void dtpdataVencimento_ValueChanged(object sender, EventArgs e)
         {
           dtpdataVencimento.Format = DateTimePickerFormat.Custom;
-          dtpdataVencimento.CustomFormat = "ddddddd, dd MMM yyyy";
+          dtpdataVencimento.CustomFormat = "ddddddd, dd MMMMMMMMM yyyy";
         }
        
 
@@ -140,7 +140,7 @@ namespace ExercicioAvaliacao
                 {
                     cnn.ConnectionString = "server=localhost;database=controle;uid=root;pwd=;port=3306;convert zero datetime = true";
                     cnn.Open();
-                    string sql = "Select * from contas";
+                    string sql = "Select * from contas where tipo = 1";
                     DataTable table = new DataTable();
                     MySqlDataAdapter adpter = new MySqlDataAdapter(sql, cnn);
                     adpter.Fill(table);

@@ -218,5 +218,10 @@ namespace ExercicioAvaliacao
                 btnInserir.Text = "NOVO";
             }
         }
+
+        private void Agenda_Load(object sender, EventArgs e)
+        {
+
+        }
     }   
 }

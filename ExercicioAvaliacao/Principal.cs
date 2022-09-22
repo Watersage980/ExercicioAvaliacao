@@ -78,5 +78,12 @@ namespace ExercicioAvaliacao
             contato.MdiParent = this;
             contato.Show();
         }
+
+        private void pesquisarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Pesquisa pesquisar = new Pesquisa();
+            pesquisar.MdiParent = this;
+            pesquisar.Show();
+        }
     }
 }

@@ -93,6 +93,7 @@
             this.btnPesquisar.TabIndex = 14;
             this.btnPesquisar.Text = "PESQUISAR";
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // dgwContasReceber
             // 
@@ -101,6 +102,7 @@
             this.dgwContasReceber.Name = "dgwContasReceber";
             this.dgwContasReceber.Size = new System.Drawing.Size(690, 135);
             this.dgwContasReceber.TabIndex = 13;
+            this.dgwContasReceber.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwContasReceber_CellDoubleClick);
             // 
             // btnDeletar
             // 
@@ -110,6 +112,7 @@
             this.btnDeletar.TabIndex = 0;
             this.btnDeletar.Text = "DELETAR";
             this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // btnAlterar
             // 
@@ -119,6 +122,7 @@
             this.btnAlterar.TabIndex = 0;
             this.btnAlterar.Text = "ALTERAR";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnInserir
             // 
@@ -136,6 +140,7 @@
             this.dtpDataVencimento.Name = "dtpDataVencimento";
             this.dtpDataVencimento.Size = new System.Drawing.Size(278, 20);
             this.dtpDataVencimento.TabIndex = 30;
+            this.dtpDataVencimento.ValueChanged += new System.EventHandler(this.dtpDataVencimento_ValueChanged);
             // 
             // txtIdContasReceber
             // 
@@ -181,6 +186,7 @@
             this.cbRecebido.TabIndex = 35;
             this.cbRecebido.Text = "recebido";
             this.cbRecebido.UseVisualStyleBackColor = true;
+            this.cbRecebido.CheckedChanged += new System.EventHandler(this.cbRecebido_CheckedChanged);
             // 
             // txtNome
             // 

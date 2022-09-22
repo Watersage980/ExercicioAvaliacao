@@ -225,6 +225,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Agenda";
             this.Text = "Agenda";
+            this.Load += new System.EventHandler(this.Agenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwAgenda)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
