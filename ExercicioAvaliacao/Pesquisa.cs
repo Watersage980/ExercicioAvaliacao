@@ -73,7 +73,8 @@ namespace ExercicioAvaliacao
         }
 
         private void dgwPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {           
+        {
+            
         }
     }
 }
