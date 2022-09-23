@@ -39,7 +39,9 @@ namespace ExercicioAvaliacao
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-
+            Pesquisa pesquisar = new Pesquisa();
+            //pesquisar.MdiParent = this;
+            pesquisar.Show();
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
