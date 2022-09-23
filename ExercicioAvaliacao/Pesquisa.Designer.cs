@@ -30,56 +30,31 @@
         {
             this.dgwPesquisa = new System.Windows.Forms.DataGridView();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
-            this.rbReceber = new System.Windows.Forms.RadioButton();
-            this.rbPagar = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPesquisa)).BeginInit();
             this.SuspendLayout();
             // 
             // dgwPesquisa
             // 
             this.dgwPesquisa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwPesquisa.Location = new System.Drawing.Point(27, 161);
+            this.dgwPesquisa.Location = new System.Drawing.Point(27, 100);
             this.dgwPesquisa.Name = "dgwPesquisa";
-            this.dgwPesquisa.Size = new System.Drawing.Size(725, 256);
+            this.dgwPesquisa.Size = new System.Drawing.Size(725, 317);
             this.dgwPesquisa.TabIndex = 0;
+            this.dgwPesquisa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwPesquisa_CellDoubleClick);
             // 
             // txtPesquisar
             // 
-            this.txtPesquisar.Location = new System.Drawing.Point(191, 39);
+            this.txtPesquisar.Location = new System.Drawing.Point(179, 38);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(417, 20);
             this.txtPesquisar.TabIndex = 1;
             this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
-            // 
-            // rbReceber
-            // 
-            this.rbReceber.AutoSize = true;
-            this.rbReceber.Location = new System.Drawing.Point(523, 99);
-            this.rbReceber.Name = "rbReceber";
-            this.rbReceber.Size = new System.Drawing.Size(71, 17);
-            this.rbReceber.TabIndex = 2;
-            this.rbReceber.TabStop = true;
-            this.rbReceber.Text = "A receber";
-            this.rbReceber.UseVisualStyleBackColor = true;
-            // 
-            // rbPagar
-            // 
-            this.rbPagar.AutoSize = true;
-            this.rbPagar.Location = new System.Drawing.Point(191, 99);
-            this.rbPagar.Name = "rbPagar";
-            this.rbPagar.Size = new System.Drawing.Size(62, 17);
-            this.rbPagar.TabIndex = 2;
-            this.rbPagar.TabStop = true;
-            this.rbPagar.Text = "A pagar";
-            this.rbPagar.UseVisualStyleBackColor = true;
             // 
             // Pesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.rbPagar);
-            this.Controls.Add(this.rbReceber);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.dgwPesquisa);
             this.Name = "Pesquisa";
@@ -94,7 +69,5 @@
 
         private System.Windows.Forms.DataGridView dgwPesquisa;
         private System.Windows.Forms.TextBox txtPesquisar;
-        private System.Windows.Forms.RadioButton rbReceber;
-        private System.Windows.Forms.RadioButton rbPagar;
     }
 }

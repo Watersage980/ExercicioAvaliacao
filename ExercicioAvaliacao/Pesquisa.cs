@@ -71,5 +71,9 @@ namespace ExercicioAvaliacao
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void dgwPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {           
+        }
     }
 }
