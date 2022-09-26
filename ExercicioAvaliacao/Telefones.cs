@@ -15,9 +15,17 @@ namespace ExercicioAvaliacao
         public Telefones()
         {
             InitializeComponent();
+            btnDeletar.Visible = false;
+            btnAlterar.Visible = false;
         }
+        string continua = "yes";
 
         private void Telefones_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
         {
 
         }

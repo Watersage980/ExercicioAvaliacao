@@ -178,7 +178,6 @@
             // 
             // txtLogradouro
             // 
-            this.txtLogradouro.Enabled = false;
             this.txtLogradouro.Location = new System.Drawing.Point(115, 188);
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(355, 20);
@@ -186,7 +185,6 @@
             // 
             // txtCidade
             // 
-            this.txtCidade.Enabled = false;
             this.txtCidade.Location = new System.Drawing.Point(115, 223);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(168, 20);
@@ -194,7 +192,6 @@
             // 
             // txtBairro
             // 
-            this.txtBairro.Enabled = false;
             this.txtBairro.Location = new System.Drawing.Point(337, 223);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(133, 20);
@@ -209,7 +206,6 @@
             // 
             // txtNumero
             // 
-            this.txtNumero.Enabled = false;
             this.txtNumero.Location = new System.Drawing.Point(399, 258);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(71, 20);
@@ -217,7 +213,6 @@
             // 
             // cmbEstado
             // 
-            this.cmbEstado.Enabled = false;
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Location = new System.Drawing.Point(115, 257);
             this.cmbEstado.Name = "cmbEstado";
@@ -286,7 +281,7 @@
             // 
             // txtPesquisar
             // 
-            this.txtPesquisar.Location = new System.Drawing.Point(462, 31);
+            this.txtPesquisar.Location = new System.Drawing.Point(461, 30);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(245, 20);
             this.txtPesquisar.TabIndex = 14;
@@ -294,7 +289,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(461, 12);
+            this.label11.Location = new System.Drawing.Point(460, 11);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(69, 13);
             this.label11.TabIndex = 3;
@@ -325,7 +320,6 @@
             // 
             // txtComplemento
             // 
-            this.txtComplemento.Enabled = false;
             this.txtComplemento.Location = new System.Drawing.Point(115, 288);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(355, 20);

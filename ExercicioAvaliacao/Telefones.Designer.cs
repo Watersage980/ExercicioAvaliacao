@@ -43,6 +43,7 @@
             this.btnDeletar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgwTelefones = new System.Windows.Forms.DataGridView();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTelefones)).BeginInit();
             this.SuspendLayout();
@@ -86,7 +87,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(52, 28);
+            this.label5.Location = new System.Drawing.Point(83, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 13);
             this.label5.TabIndex = 4;
@@ -131,16 +132,17 @@
             // 
             // btnInserir
             // 
-            this.btnInserir.Location = new System.Drawing.Point(0, 0);
+            this.btnInserir.Location = new System.Drawing.Point(0, 3);
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(116, 38);
             this.btnInserir.TabIndex = 11;
             this.btnInserir.Text = "INSERIR";
             this.btnInserir.UseVisualStyleBackColor = true;
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(136, 0);
+            this.btnAlterar.Location = new System.Drawing.Point(138, 3);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(116, 38);
             this.btnAlterar.TabIndex = 11;
@@ -149,7 +151,7 @@
             // 
             // btnDeletar
             // 
-            this.btnDeletar.Location = new System.Drawing.Point(275, 0);
+            this.btnDeletar.Location = new System.Drawing.Point(275, 3);
             this.btnDeletar.Name = "btnDeletar";
             this.btnDeletar.Size = new System.Drawing.Size(116, 38);
             this.btnDeletar.TabIndex = 11;
@@ -174,11 +176,19 @@
             this.dgwTelefones.Size = new System.Drawing.Size(391, 150);
             this.dgwTelefones.TabIndex = 13;
             // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(310, 20);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(100, 20);
+            this.txtID.TabIndex = 14;
+            // 
             // Telefones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 450);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.dgwTelefones);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmbOperadora);
@@ -218,5 +228,6 @@
         private System.Windows.Forms.Button btnDeletar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgwTelefones;
+        private System.Windows.Forms.TextBox txtID;
     }
 }
