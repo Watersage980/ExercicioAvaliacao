@@ -182,5 +182,37 @@ namespace ExercicioAvaliacao
                 continua = "yes";
             }
         }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            Data();
+            if (MessageBox.Show("Deseja realmente Alterar?", "ALTERAR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    using (MySqlConnection cnx = new MySqlConnection())
+                    {
+                        cnx.ConnectionString = "server = localhost; database = controle; uid = root; pwd =; port = 3306;Convert Zero DateTime = true";
+                        cnx.Open();
+                        string sql = "insert into endereco (logradouro,cidade,bairro,UF,cep) values ('" + txtLogradouro.Text + "','" + txtCidade.Text + "','" + txtBairro.Text + "','" + cmbEstado.Text + "','" + txtCEP.Text + "')";
+                        txtLogradouro.Enabled = false;
+                        txtBairro.Enabled = false;
+                        txtCidade.Enabled = false;
+                        cmbEstado.Enabled = false;
+                        string sql3 = "update contato set nome = '" + txtNome.Text + "',email = '" + txtEmail.Text + "', CPF = '" + txtCPF.Text + "', dataNascimento = '" + DataNova + "', numeroCasa = '" + txtNumero.Text + "', complemento = '" + txtComplemento.Text + "', fkEndereco = ( select idEndereco from endereco where  CEP = '" + txtCEP.Text + "' limit 1) where idContato = '" + txtIdContato.Text + "'";
+                        MySqlCommand cmd = new MySqlCommand(sql, cnx);
+                        cmd.ExecuteNonQuery();
+                        MySqlCommand cmd3 = new MySqlCommand(sql3, cnx);
+                        cmd3.ExecuteNonQuery();
+                        MessageBox.Show("Atualizado com sucesso");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            Mostrar();
+        }
     }
 }
