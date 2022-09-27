@@ -247,6 +247,7 @@
             this.btnDeletar.TabIndex = 0;
             this.btnDeletar.Text = "DELETAR";
             this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // dgwTelefones
             // 
@@ -279,6 +280,7 @@
             this.dgwContatos.Name = "dgwContatos";
             this.dgwContatos.Size = new System.Drawing.Size(690, 135);
             this.dgwContatos.TabIndex = 13;
+            this.dgwContatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwContatos_CellDoubleClick);
             // 
             // txtPesquisar
             // 
@@ -286,6 +288,7 @@
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(245, 20);
             this.txtPesquisar.TabIndex = 14;
+            this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
             // 
             // label11
             // 

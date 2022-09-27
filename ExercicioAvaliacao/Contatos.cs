@@ -214,5 +214,77 @@ namespace ExercicioAvaliacao
             }
             Mostrar();
         }
+
+        private void dgwContatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgwContatos.CurrentRow.Index != -1)
+            {
+                txtIdContato.Text = dgwContatos.CurrentRow.Cells[0].Value.ToString();
+                txtNome.Text = dgwContatos.CurrentRow.Cells[1].Value.ToString();
+                txtEmail.Text = dgwContatos.CurrentRow.Cells[4].Value.ToString();
+                txtCPF.Text = dgwContatos.CurrentRow.Cells[2].Value.ToString();
+                dtpDataNascimento.Value = Convert.ToDateTime(dgwContatos.CurrentRow.Cells[3].Value.ToString());
+                txtCEP.Text = dgwContatos.CurrentRow.Cells[6].Value.ToString();
+                txtLogradouro.Text = dgwContatos.CurrentRow.Cells[7].Value.ToString();
+                txtNumero.Text = dgwContatos.CurrentRow.Cells[8].Value.ToString();
+                txtComplemento.Text = dgwContatos.CurrentRow.Cells[9].Value.ToString();
+                txtBairro.Text = dgwContatos.CurrentRow.Cells[10].Value.ToString();
+                txtCidade.Text = dgwContatos.CurrentRow.Cells[11].Value.ToString();
+                cmbEstado.Text = dgwContatos.CurrentRow.Cells[12].Value.ToString();
+                Fk_s.Fk = int.Parse(dgwContatos.CurrentRow.Cells[0].Value.ToString());
+                btnInserir.Text = "NOVO";
+                btnDeletar.Visible = true;
+                btnAlterar.Visible = true;
+            }
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente deletar?", "Deletar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    using (MySqlConnection cnn = new MySqlConnection())
+                    {
+                        cnn.ConnectionString = "server = localhost; database = controle; uid = root; pwd =; port = 3306;Convert Zero DateTime = true";
+                        cnn.Open();
+                        string sql = "delete from contato where idContato = '" + txtIdContato.Text + "'"; 
+                        MySqlCommand cmd = new MySqlCommand(sql, cnn);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Deletado com sucesso!");
+
+                    }
+                    Limpar();
+                    Mostrar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                using (MySqlConnection cnx = new MySqlConnection())
+                {
+                    cnx.ConnectionString = "server = localhost; database = controle; uid = root; pwd =; port = 3306; Convert Zero DateTime = true";
+                    cnx.Open();
+                    string sql = "select idContato,nome,cpf,dataNascimento,email,sexo,cep,logradouro,numeroCasa,complemento,bairro,cidade,uf from endereco inner join contato on endereco.idEndereco = contato.fkEndereco where nome like '" + txtPesquisar.Text + "%'";
+                    DataTable table = new DataTable();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, cnx);
+                    adapter.Fill(table);
+                    dgwContatos.DataSource = table;
+                    dgwContatos.AutoGenerateColumns = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
