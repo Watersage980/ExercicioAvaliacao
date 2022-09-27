@@ -69,6 +69,7 @@
             this.cmbPesquisarNome.Name = "cmbPesquisarNome";
             this.cmbPesquisarNome.Size = new System.Drawing.Size(310, 21);
             this.cmbPesquisarNome.TabIndex = 3;
+            this.cmbPesquisarNome.SelectedIndexChanged += new System.EventHandler(this.cmbPesquisarNome_SelectedIndexChanged);
             // 
             // dgwTelefones
             // 
